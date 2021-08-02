@@ -1,0 +1,29 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  tag:  
+    description: 'Image tag'
+    default: ghcr.io/${{ github.event.release.tag_name }}
+  registry:
+    description: 'Container registry'
+    default: ghcr.io
+  username:
+    description: 'Container registry username'
+    default: ${{ github.actor }}
+  password:
+    description: 'Container registry password'
+    default: ${{ secrets.GITHUB_TOKEN }}
+  platforms: 
+    descriptions: 'Platforms to build for'
+    default: 'linux/amd64'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/example.sh
+      shell: bash
+    - run: |
+        echo "${{ inputs.tag }} - ${{ inputs.registry }} - ${{ inputs.username }} - ${{ inputs.password }} - ${{ inputs.platforms }}"
