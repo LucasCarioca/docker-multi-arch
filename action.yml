@@ -1,9 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone'
 inputs:
+  image:
+    description:
+    default: ghcr.io/${{ github.repository }}
   tag:  
     description: 'Image tag'
-    default: ghcr.io/${{ github.event.release.tag_name }}
+    default: ${{ github.event.release.tag_name }}
   registry:
     description: 'Container registry'
     default: ghcr.io
