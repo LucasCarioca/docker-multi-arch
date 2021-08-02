@@ -9,10 +9,10 @@ inputs:
     default: ghcr.io
   username:
     description: 'Container registry username'
-    default: ${{ github.actor }}
+    required: true
   password:
     description: 'Container registry password'
-    default: ${{ secrets.GITHUB_TOKEN }}
+    required: true
   platforms: 
     descriptions: 'Platforms to build for'
     default: 'linux/amd64'
