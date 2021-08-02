@@ -27,3 +27,4 @@ runs:
       shell: bash
     - run: |
         echo "${{ inputs.tag }} - ${{ inputs.registry }} - ${{ inputs.username }} - ${{ inputs.password }} - ${{ inputs.platforms }}"
+      shell: bash
